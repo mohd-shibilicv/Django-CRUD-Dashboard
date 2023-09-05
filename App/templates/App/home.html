@@ -1,0 +1,20 @@
+{% extends 'App/base.html' %}
+
+{% block title %}
+    Home
+{% endblock title %}
+
+{% block content %}
+<body>
+    <div class="text-center">
+        <br />
+        <br />
+        <h3>Management At It's Finest!</h3>
+        <br />
+        <h5>Keep track of your records effortlessly!</h5>
+        <hr />
+        <br />
+        <a href="{% url 'register' %}" type="button" class="btn btn-outline-primary">Create your account &nbsp;&nbsp;<i class="fa fa-user-plus" aria-hidden="true"></i></a>
+    </div>
+</body>
+{% endblock content %}

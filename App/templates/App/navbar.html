@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary justify-content-center">
+    <a class="navbar-brand main-heading" href="{% url 'home' %}"> 
+        &nbsp; Django CRM
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse text-center" style="display: flex; justify-content: space-between;" id="navbarNavDropdown">
+        <ul class="navbar-nav mr-auto">
+        &nbsp;     &nbsp;     &nbsp; 
+        {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'dashboard' %}">Dashboard &nbsp; <i class="fa fa-home" aria-hidden="true"></i> </a>
+            </li>
+            &nbsp;     &nbsp;     &nbsp; 
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'signout' %}">Sign out &nbsp; <i class="fa fa-sign-out" aria-hidden="true"></i> </a>
+            </li>
+        </ul>
+        <form class="d-flex" style="margin-right: 90px;" method="POST" action="{% url 'search-records' %}">
+            {% csrf_token %}
+            <input type="search" class="form-control me-2" placeholder="{% if query %}{{ query }}{% else %}Search{% endif %}" name="query" aria-label="Serach" />
+            <button type="submit" class="btn btn-outline-secondary"><i class="fa fa-search" aria-hidden="true"></i></button>
+        </form>
+        {% else %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'register' %}"> Register </a>
+        </li>
+        &nbsp;     &nbsp;     &nbsp; 
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'login' %}">Login</a>
+        </li>
+        {% endif %}
+    </div>
+</nav>
